@@ -49,7 +49,7 @@ def receive_message():
     global stored_message 
     data = request.json
     if data and 'chain' in data and 'amount' in data:
-        stored_message = f"Chain: {data['chain']}, Amount: {data['amount']}"
+        stored_message = f"50 Gas token has been received on Neo"
         text_to_speech(stored_message)
         return jsonify({"status": "Message received"}), 200
     else:
