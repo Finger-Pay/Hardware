@@ -48,13 +48,12 @@ def get_message():
 def receive_message():
     global stored_message 
     data = request.json
-    if data and 'message' in data:
-        stored_message = data['message']
+    if data and 'chain' in data and 'amount' in data:
+        stored_message = f"Chain: {data['chain']}, Amount: {data['amount']}"
         text_to_speech(stored_message)
         return jsonify({"status": "Message received"}), 200
     else:
         return jsonify({"error": "Invalid data"}), 400
-
 if __name__ == '__main__':
     start_tts_process()
     try:
